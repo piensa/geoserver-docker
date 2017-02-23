@@ -18,6 +18,11 @@ RUN cd /usr/local/tomcat/webapps \
 
 VOLUME $GEOSERVER_DATA_DIR
 
+RUN cd $GEOSERVER_DATA_DIR
+RUN curl -L -O http://build.geonode.org/geoserver/latest/data-$GEOSERVER_VERSION.zip && \
+RUN unzip -q data-$GEOSERVER_VERSION.zip
+RUN rm data-$GEOSERVER_VERSION.zip
+
 # Set DOCKER_HOST address
 ARG DOCKER_HOST=${DOCKER_HOST}
 # for debugging
@@ -50,4 +55,6 @@ RUN mkdir -p /usr/local/tomcat/tmp
 WORKDIR /usr/local/tomcat/tmp
 COPY entrypoint.sh /usr/local/tomcat/tmp/entrypoint.sh
 RUN chmod +x /usr/local/tomcat/tmp/entrypoint.sh
+
+
 CMD ["/usr/local/tomcat/tmp/entrypoint.sh"]
