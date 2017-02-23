@@ -19,7 +19,7 @@ RUN cd /usr/local/tomcat/webapps \
 VOLUME $GEOSERVER_DATA_DIR
 
 RUN cd $GEOSERVER_DATA_DIR
-RUN curl -L -O http://build.geonode.org/geoserver/latest/data-$GEOSERVER_VERSION.zip && \
+RUN curl -L -O http://build.geonode.org/geoserver/latest/data-$GEOSERVER_VERSION.zip 
 RUN unzip -q data-$GEOSERVER_VERSION.zip
 RUN rm data-$GEOSERVER_VERSION.zip
 
