@@ -5,7 +5,7 @@ MAINTAINER GeoNode Development Team
 # Set GeoServer version and data directory
 #
 ENV GEOSERVER_VERSION=2.9.x-oauth2
-ENV GEOSERVER_DATA_DIR="/geoserver_data/"
+ENV GEOSERVER_DATA_DIR="/geoserver_data/data"
 
 
 #
@@ -18,7 +18,7 @@ RUN cd /usr/local/tomcat/webapps \
 
 
 RUN curl -L -O http://build.geonode.org/geoserver/latest/data-$GEOSERVER_VERSION.zip 
-RUN unzip -x -d ${GEOSERVER_DATA_DIR} data-${GEOSERVER_VERSION}.zip
+RUN unzip -x -d /geoserver_data/ data-${GEOSERVER_VERSION}.zip
 
 
 # Set DOCKER_HOST address
